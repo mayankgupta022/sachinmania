@@ -2,7 +2,9 @@
 
 define([
 	'jquery', 'underscore', 'backbone'
-], function($, _, Backbone,) {
+], function($, _, Backbone) {
+
+	var currentView = null;
 
 	// Defining the application router
 	var AppRouter = Backbone.Router.extend({
@@ -13,23 +15,12 @@ define([
 
 		home: function(){
 			this.destroyExistingViews();
-			this.createHeader();
-			require(['home/view/HomeView'], function(HomeView) {
-				currentView = new HomeView({
+			require(['dashboard/view/DashboardView'], function(DashboardView) {
+				currentView = new DashboardView({
 					container: $("#content-wrapper")
 				});
 			}, function(err) {
 				console.log("error loading home page"+err);
-			});
-		},
-
-		createHeader: function(){
-			require([ 'headerContainer/view/HeaderContainerView' ], function(HeaderContainerView) {
-				headerView = new HeaderContainerView({
-					container: $('header')
-				});
-			}, function(err) {
-				console.log("error loading header"+err);
 			});
 		},
 

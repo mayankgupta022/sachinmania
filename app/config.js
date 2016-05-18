@@ -1,12 +1,12 @@
 requirejs.config({
 	paths : {
 		backbone : '../libs/backbone/backbone',
-		bootstrap : '../libs/bootstrap/bootstrap',
+		bootstrap : '../libs/bootstrap/js/bootstrap',
 		d3 : '../libs/nvd3/d3.v3.min',
-		jquery : '../libs/jquery/jquery',
+		jquery : '../libs/backbone/jquery',
 		nvd3 : '../libs/nvd3/nv.d3.min',
-		text : '../libs/require/text',
-		underscore : '../libs/underscore/underscore'
+		text : '../libs/backbone/text',
+		underscore : '../libs/backbone/underscore'
 	},
 
 	shim : {
@@ -29,7 +29,7 @@ requirejs.config({
 	waitSeconds : 120
 });
 
-require([]
+require([
 	'jquery', 'bootstrap','nvd3','router'
 ], function($, bootstrap, nvd3, app_router) {
 
