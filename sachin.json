@@ -182,7 +182,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "52",
+    "batting_score": 52,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
@@ -211,7 +211,7 @@
     "batting_innings": "1st"
   },
   {
-    "batting_score": "11",
+    "batting_score": 11,
     "not_out": true,
     "wickets": 4,
     "runs_conceded": 34,
@@ -394,7 +394,7 @@
     "batting_innings": "1st"
   },
   {
-    "batting_score": "57",
+    "batting_score": 57,
     "not_out": true,
     "wickets": 0,
     "runs_conceded": 38,
@@ -479,7 +479,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "54",
+    "batting_score": 54,
     "not_out": true,
     "wickets": 1,
     "runs_conceded": 37,
@@ -662,7 +662,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "82",
+    "batting_score": 82,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
@@ -761,7 +761,7 @@
     "batting_innings": "1st"
   },
   {
-    "batting_score": "8",
+    "batting_score": 8,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
@@ -832,7 +832,7 @@
     "batting_innings": "1st"
   },
   {
-    "batting_score": "26",
+    "batting_score": 26,
     "not_out": true,
     "wickets": 1,
     "runs_conceded": 27,
@@ -903,7 +903,7 @@
     "batting_innings": "1st"
   },
   {
-    "batting_score": "28",
+    "batting_score": 28,
     "not_out": true,
     "wickets": 1,
     "runs_conceded": 24,
@@ -932,7 +932,7 @@
     "batting_innings": "1st"
   },
   {
-    "batting_score": "11",
+    "batting_score": 11,
     "not_out": true,
     "wickets": 1,
     "runs_conceded": 36,
@@ -1073,7 +1073,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "11",
+    "batting_score": 11,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
@@ -1340,7 +1340,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "112",
+    "batting_score": 112,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
@@ -1439,7 +1439,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "127",
+    "batting_score": 127,
     "not_out": true,
     "wickets": 0,
     "runs_conceded": 26,
@@ -1720,7 +1720,7 @@
     "batting_innings": "1st"
   },
   {
-    "batting_score": "89",
+    "batting_score": 89,
     "not_out": true,
     "wickets": 0,
     "runs_conceded": 12,
@@ -2029,7 +2029,7 @@
     "batting_innings": "1st"
   },
   {
-    "batting_score": "65",
+    "batting_score": 65,
     "not_out": true,
     "wickets": 0,
     "runs_conceded": 4,
@@ -2240,7 +2240,7 @@
     "batting_innings": "1st"
   },
   {
-    "batting_score": "25",
+    "batting_score": 25,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
@@ -2395,7 +2395,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "82",
+    "batting_score": 82,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
@@ -2676,7 +2676,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "100",
+    "batting_score": 100,
     "not_out": true,
     "wickets": 0,
     "runs_conceded": 4,
@@ -2775,7 +2775,7 @@
     "batting_innings": "1st"
   },
   {
-    "batting_score": "127",
+    "batting_score": 127,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
@@ -2860,7 +2860,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "118",
+    "batting_score": 118,
     "not_out": true,
     "wickets": 0,
     "runs_conceded": 4,
@@ -2903,7 +2903,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "124",
+    "batting_score": 124,
     "not_out": true,
     "wickets": 1,
     "runs_conceded": 16,
@@ -2988,7 +2988,7 @@
     "batting_innings": "1st"
   },
   {
-    "batting_score": "140",
+    "batting_score": 140,
     "not_out": true,
     "wickets": 0,
     "runs_conceded": 23,
@@ -3171,7 +3171,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "186",
+    "batting_score": 186,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
@@ -3774,7 +3774,7 @@
     "batting_innings": "1st"
   },
   {
-    "batting_score": "70",
+    "batting_score": 70,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
@@ -3803,7 +3803,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "81",
+    "batting_score": 81,
     "not_out": true,
     "wickets": 0,
     "runs_conceded": 14,
@@ -3818,7 +3818,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "122",
+    "batting_score": 122,
     "not_out": true,
     "wickets": 0,
     "runs_conceded": 11,
@@ -3987,7 +3987,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "87",
+    "batting_score": 87,
     "not_out": true,
     "wickets": 0,
     "runs_conceded": 17,
@@ -4030,7 +4030,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "34",
+    "batting_score": 34,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
@@ -4087,7 +4087,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "105",
+    "batting_score": 105,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
@@ -4172,7 +4172,7 @@
     "batting_innings": "1st"
   },
   {
-    "batting_score": "9",
+    "batting_score": 9,
     "not_out": true,
     "wickets": 1,
     "runs_conceded": 13,
@@ -4215,7 +4215,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "7",
+    "batting_score": 7,
     "not_out": true,
     "wickets": 0,
     "runs_conceded": 36,
@@ -4426,7 +4426,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "48",
+    "batting_score": 48,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
@@ -4721,7 +4721,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "82",
+    "batting_score": 82,
     "not_out": true,
     "wickets": 3,
     "runs_conceded": 35,
@@ -4918,7 +4918,7 @@
     "batting_innings": "1st"
   },
   {
-    "batting_score": "67",
+    "batting_score": 67,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
@@ -5101,7 +5101,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "2",
+    "batting_score": 2,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
@@ -5116,7 +5116,7 @@
     "batting_innings": "1st"
   },
   {
-    "batting_score": "141",
+    "batting_score": 141,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
@@ -5313,7 +5313,7 @@
     "batting_innings": "1st"
   },
   {
-    "batting_score": "100",
+    "batting_score": 100,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
@@ -5384,7 +5384,7 @@
     "batting_innings": "1st"
   },
   {
-    "batting_score": "57",
+    "batting_score": 57,
     "not_out": true,
     "wickets": 1,
     "runs_conceded": 1,
@@ -5847,7 +5847,7 @@
     "batting_innings": "2nd"
   },
   {
-    "batting_score": "117",
+    "batting_score": 117,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
@@ -5974,7 +5974,7 @@
     "batting_innings": "1st"
   },
   {
-    "batting_score": "163",
+    "batting_score": 163,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
@@ -6171,7 +6171,7 @@
     "batting_innings": "1st"
   },
   {
-    "batting_score": "96",
+    "batting_score": 96,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
@@ -6214,7 +6214,7 @@
     "batting_innings": "1st"
   },
   {
-    "batting_score": "200",
+    "batting_score": 200,
     "not_out": true,
     "wickets": "-",
     "runs_conceded": "-",
