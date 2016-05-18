@@ -1,0 +1,22 @@
+html {
+    height: 100%;
+    font-size: 100%;
+}
+
+body {
+    color: #565656;
+    background: #F3F3F3;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    margin: 0px auto;
+    padding: 0px;
+    height: 100%;
+}
+
+header {
+    background-image: url('../img/header.jpg');
+    width: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    min-height: 500px;
+}
