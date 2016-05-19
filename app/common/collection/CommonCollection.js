@@ -5,7 +5,7 @@ define([
 
     var CommonCollection = Backbone.Collection.extend({
 
-        initialize: function(options, data) {
+        initialize: function(data, options) {
             this.options = options;
             if(this.options && this.options.url){
                 this.url = this.options.url;

@@ -5,9 +5,8 @@ define(
 	'text!summaryWidget/template/SummaryTemplate.htm',
 	'common/view/CommonView',
 	'common/collection/CommonCollection',
-	'common/model/CommonModel',
 	'summaryWidget/view/SummaryDataView'
-], function($, _, Backbone, summaryTemplate, CommonView, SummaryCollection, SummaryModel, SummaryDataView) {
+], function($, _, Backbone, summaryTemplate, CommonView, SummaryCollection, SummaryDataView) {
 
 	var SummaryView;
 	SummaryView = CommonView.extend({
@@ -29,7 +28,7 @@ define(
 		},
 
 		createSummaryData: function () {
-			this.summaryData = new SummaryModel(this.options.data);
+			this.summaryData = new SummaryCollection(this.options.data, this.options);
 			if (this.options.url) {
 				this.summaryData.on('sync', this.render, this);
 			} else if(this.options.data) {
