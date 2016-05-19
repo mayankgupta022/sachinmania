@@ -3,10 +3,11 @@
 define(
     [ 'jquery', 'underscore', 'backbone',
     'text!horizontalBarWidget/template/HorizontalBarTemplate.htm',
+    'common/view/CommonView',
     'common/collection/CommonCollection',
-], function($, _, Backbone, horizontalBarTemplate, HorizontalBarCollection) {
+], function($, _, Backbone, horizontalBarTemplate, CommonView, HorizontalBarCollection) {
 
-    var HorizontalBarView = Backbone.View.extend({
+    var HorizontalBarView = CommonView.extend({
         firstRender             : true,
 
         initialize : function(options) {
