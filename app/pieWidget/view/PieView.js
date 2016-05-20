@@ -47,8 +47,9 @@ define([
 
 			nv.addGraph(function() {
 				var chart = nv.models.pieChart()
-					.x(function(d) { return d.key })
-					.y(function(d) { return d.y })
+					.x(function(d) { return d.label })
+					.y(function(d) { return d.value })
+					.showLegend(self.options.showLegend)
 					.color(self.chartColors)
 					.showLabels(false)
 					.donut(self.options.doughnut);
@@ -66,7 +67,7 @@ define([
 			});
 		},
 
-		render : function() {
+		render: function() {
 			this.pieData = this.transformFunction(this);
 
 			var compiledTemplate = _.template(pieTemplate);

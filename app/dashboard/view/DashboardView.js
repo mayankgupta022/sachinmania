@@ -45,21 +45,35 @@ define([
         },
 
 		summaryTransformation: function(self) {
+			var totalMatches = self.summaryData.models.length;
+			
 			var totalRuns = _.reduce(self.summaryData.models, function(memo, num, i, obj) {
 				if(num.attributes.batting_score == "DNB" || num.attributes.batting_score == "TDNB")
 					return memo;
 				return memo + num.attributes.batting_score;
 			}, 0);
 
+			var totalWins = self.summaryData.where({match_result: "won"}).length;
+
+			var totalCatches =  _.reduce(self.summaryData.models, function(memo, num, i, obj) {
+				if(isNaN(num.attributes.catches))
+				return memo;
+				return memo + num.attributes.catches;
+			}, 0);
+
 			var summaryArray = [
 			    {
 			        elementName: "Total Matches",
-			        elementValue: self.summaryData.models.length,
-			        elementUnit: null
+			        elementValue: totalMatches
 			    },{
 			        elementName: "Total Score",
-			        elementValue: totalRuns,
-			        elementUnit: null
+			        elementValue: totalRuns
+			    },{
+			        elementName: "Total Wins",
+			        elementValue: totalWins
+			    },{
+			        elementName: "Total Catches",
+			        elementValue: totalCatches
 			    }
 			];
 
@@ -73,11 +87,44 @@ define([
 
 			for(var ground in groundWise)			{
 				runs.push({
-					key: ground,
-					y: _.reduce(groundWise[ground], function(memo, num, i, obj) {
+					label: ground,
+					value: _.reduce(groundWise[ground], function(memo, num, i, obj) {
 						if(num.attributes.batting_score == "DNB" || num.attributes.batting_score == "TDNB")
 							return memo;
 						return memo + num.attributes.batting_score;
+					}, 0)
+				});
+			}
+
+			runs = _.sortBy(runs, 'value').reverse().slice(0,5);
+
+			return runs;
+        },
+
+		centuriesTransformation: function(self) {
+            var runs = [];
+
+			var centuries = self.widgetCollection.groupBy(function(num, i, obj) {
+				if(num.attributes.batting_score >= 200)
+					return "Double Centuries";
+				if(num.attributes.batting_score >= 100)
+					return "Centuries";
+				if(num.attributes.batting_score >= 50)
+					return "Half Centuries";
+				if(num.attributes.batting_score >= 30)
+					return "Thirties";
+				return "Others";
+			});
+
+			delete centuries["Others"];
+
+			for(var score in centuries)			{
+				runs.push({
+					label: score,
+					value: _.reduce(centuries[score], function(memo, num, i, obj) {
+						if(num.attributes.batting_score == "DNB" || num.attributes.batting_score == "TDNB")
+							return memo;
+						return memo + 1;
 					}, 0)
 				});
 			}
@@ -93,7 +140,7 @@ define([
 
 			this.data = this.dashboardCollection.toJSON();
 
-			this.summaryCollectionView = new GridElementView({
+			this.summaryView = new GridElementView({
 				container: $("#summaryContainer", this.$el),
 				data: this.data,
 				heading:"Summary",
@@ -101,21 +148,33 @@ define([
 				transformationFunction : this.summaryTransformation
 			});
 
-			this.horizontalBarView = new GridElementView({
+			this.scoreAgainstOppositionView = new GridElementView({
 				container: $("#scoreAgainstOpposition", this.$el),
 				data:this.data,
-				widgetID:"dashboardWidget",
+				widgetID:"scoreAgainstOpposition",
+				showLegend: false,
 				heading:"Average runs against opposition",
 				transformationFunction: this.scoreAgainstOppositionTransformation
 			});
 
-			this.pieView = new GridElementView({
+			this.scoreInGroundView = new GridElementView({
 				container: $("#scoreInGround", this.$el),
 				data:this.data,
-				widgetID:"dashboardWidget",
+				widgetID:"scoreInGround",
 				currentDisplayWidget: "Pie",
+				showLegend: true,
 				heading:"Grounds with maximum runs",
 				transformationFunction: this.scoreInGroundTransformation
+			});
+
+			this.centuriesView = new GridElementView({
+				container: $("#centuries", this.$el),
+				data:this.data,
+				widgetID:"centuries",
+				currentDisplayWidget: "Doughnut",
+				showLegend: true,
+				heading:"Centuries",
+				transformationFunction: this.centuriesTransformation
 			});
 
 			return this;

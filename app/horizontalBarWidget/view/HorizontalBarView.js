@@ -59,19 +59,6 @@ define(
                     .showYAxis(true)
                     .showXAxis(true);
 
-                chart.xAxis
-                    .staggerLabels(true);
-
-                    var XAxisLabel = "";
-                    if(self.options.XAxisLabel)
-                        XAxisLabel = self.options.XAxisLabel;
-                    if(self.options.dataUnit)
-                        XAxisLabel += " (" + self.options.dataUnit +")";
-
-                chart.yAxis
-                    .axisLabel(XAxisLabel)
-                    .staggerLabels(true);
-
                 var div = $('#horizontalBarChart svg', self.$el)[0];
 
                 d3.select(div)

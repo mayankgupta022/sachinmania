@@ -89,6 +89,7 @@ define([
                 widgetID:this.options.widgetID,
                 denominate:this.options.denominate,
                 dataUnit:this.options.dataUnit,
+                showLegend: this.options.showLegend,
                 parentRef: this,
                 transformFunction: this.options.transformationFunction
             });
@@ -100,7 +101,7 @@ define([
                 data:this.options.data,
                 widgetID: this.options.widgetID,
                 doughnut: doughnut,
-                parentRef: this,
+                showLegend: this.options.showLegend,                parentRef: this,
                 transformFunction: this.options.transformationFunction
 			});
 		},

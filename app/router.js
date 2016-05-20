@@ -15,12 +15,23 @@ define([
 
 		home: function(){
 			this.destroyExistingViews();
+			this.createHeader();
 			require(['dashboard/view/DashboardView'], function(DashboardView) {
 				currentView = new DashboardView({
 					container: $("#content-wrapper")
 				});
 			}, function(err) {
 				console.log("error loading home page"+err);
+			});
+		},
+
+		createHeader: function(){
+			require(['header/view/HeaderView'], function(HeaderView) {
+				currentView = new HeaderView({
+					container: $("header")
+				});
+			}, function(err) {
+				console.log("error loading header"+err);
 			});
 		},
 
