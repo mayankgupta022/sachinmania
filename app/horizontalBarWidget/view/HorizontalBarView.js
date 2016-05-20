@@ -42,7 +42,7 @@ define(
             var leftMargin = 100;
             var bottomMargin = 15;
 
-            $(".custom-chart", this.$el).attr("style", "height:" + ((horizontalBarData[0].values.length * 12) + 50) + "px !important");
+            $(".custom-chart", this.$el).attr("style", "height:" + ((horizontalBarData[0].values.length * 24) + 50) + "px !important");
 
             nv.addGraph(function() {
                 var chart = nv.models.multiBarHorizontalChart()
@@ -54,7 +54,6 @@ define(
                     .showControls(false)
                     .showLegend(self.options.showLegend)
                     .color(self.chartColors)
-                    .stacked(horizontalBarData.length > 1)
                     .showYAxis(true)
                     .showXAxis(true);
 

@@ -20,28 +20,38 @@ define([
 		},
 
 		scoreAgainstOppositionTransformation: function(self){
-            var runs=[];
+            var totalRuns=[];
+			var averageRuns=[];
 
 			var oppositionWise = self.widgetCollection.groupBy("opposition");
 
 			for(var opposition in oppositionWise) {
-				runs.push({
+				var total = _.reduce(oppositionWise[opposition], function(memo, num, i, obj) {
+					if(num.attributes.batting_score == "DNB" || num.attributes.batting_score == "TDNB")
+						return memo;
+					return memo + num.attributes.batting_score;
+				}, 0);
+				var numberOfMatches = _.reduce(oppositionWise[opposition], function(memo, num, i, obj) {
+					if(num.attributes.batting_score == "DNB" || num.attributes.batting_score == "TDNB")
+						return memo;
+					return memo + 1;
+				}, 0);
+				totalRuns.push({
 					label: opposition,
-					value: _.reduce(oppositionWise[opposition], function(memo, num, i, obj) {
-						if(num.attributes.batting_score == "DNB" || num.attributes.batting_score == "TDNB")
-							return memo;
-						return memo + num.attributes.batting_score;
-					}, 0)/_.reduce(oppositionWise[opposition], function(memo, num, i, obj) {
-						if(num.attributes.batting_score == "DNB" || num.attributes.batting_score == "TDNB")
-							return memo;
-						return memo + 1;
-					}, 0)
+					value: total
+				});
+				averageRuns.push({
+					label: opposition,
+					value: total/numberOfMatches
 				});
 			}
 
-			runs = _.sortBy(runs, 'value').reverse();
+			averageRuns = _.sortBy(averageRuns, 'value').reverse();
 
-			self.barChartData= [{key: 'Average Runs',values:runs }];
+			self.barChartData= [
+				{key: 'Total Runs',values:totalRuns},
+				{key: 'Average Runs',values:averageRuns}
+			];
         },
 
 		summaryTransformation: function(self) {
@@ -152,8 +162,8 @@ define([
 				container: $("#scoreAgainstOpposition", this.$el),
 				data:this.data,
 				widgetID:"scoreAgainstOpposition",
-				showLegend: false,
-				heading:"Average runs against opposition",
+				showLegend: true,
+				heading:"Total and average runs against opposition",
 				transformationFunction: this.scoreAgainstOppositionTransformation
 			});
 
