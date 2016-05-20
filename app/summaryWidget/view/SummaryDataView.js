@@ -11,8 +11,9 @@ define(
 
         initialize: function(options) {
             this.options=options;
-                if(this.options && this.options.data)
-            this.model = this.options.data.clone();
+            if(this.options && this.options.data) {
+                this.model = this.options.data;
+            }
 
             this.render();
         },
@@ -23,11 +24,12 @@ define(
                 options:this.options
             });
 
-            if(this.options && this.options.container && this.firstRender){
+            if(this.options && this.options.container && this.firstRender) {
                 this.options.container.html(this.$el.html(compiledTemplate));
                 this.firstRender = false;
-            }else
+            } else {
                 this.$el.html(compiledTemplate);
+            }
 
             return this;
         }

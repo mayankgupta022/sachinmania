@@ -8,9 +8,8 @@ define(
 	'summaryWidget/view/SummaryDataView'
 ], function($, _, Backbone, summaryTemplate, CommonView, SummaryCollection, SummaryDataView) {
 
-	var SummaryView;
-	SummaryView = CommonView.extend({
-		firstRender	: true,
+	var SummaryView = CommonView.extend({
+		firstRender: true,
 
 		initialize: function (options) {
 			if(options) {
@@ -24,7 +23,6 @@ define(
 
 				this.createSummaryData();
 			}
-
 		},
 
 		createSummaryData: function () {
@@ -42,7 +40,7 @@ define(
 		renderCollectionData: function() {
 			if(this.widgetCollection){
 				var listParent = this.$el.find('#summaryWidgetContainer');
-				for (var i = 0, length = this.widgetCollection.length; i < length; i++) {
+				for (var i=0; i<this.widgetCollection.length; i++) {
 					var summaryDataView = new SummaryDataView({
 						data:this.widgetCollection.models[i]
 					});
@@ -61,7 +59,7 @@ define(
 
 			var compiledTemplate = _.template(summaryTemplate);
 
-			if(this.options && this.options.container && this.firstRender){
+			if(this.options && this.options.container && this.firstRender) {
 				this.options.container.html(this.$el.html(compiledTemplate));
 				this.firstRender = false;
 			} else {

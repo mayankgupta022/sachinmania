@@ -24,3 +24,20 @@ header .carousel-caption {
     color: #FFF;
     font-weight: bold;
 }
+
+#content-wrapper {
+    padding: 20px;
+}
+
+.grid {
+    padding: 10px 10px 0px 10px;
+}
+
+.panel-heading {
+    background-color: #fff !important;
+}
+
+.summary-data{
+    font-weight: bold;
+    font-size: 18px;
+}

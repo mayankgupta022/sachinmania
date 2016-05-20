@@ -8,9 +8,9 @@ define([
 ], function($, _, Backbone, pieTemplate, CommonView, PieCollection) {
 
 	var PieView = CommonView.extend({
-		firstRender	: true,
+		firstRender: true,
 
-		initialize : function(options) {
+		initialize: function(options) {
 			if(options) {
 				this.options=options;
 
@@ -21,8 +21,6 @@ define([
 
 				this.createPieChartData();
 			}
-
-			$(window).bind("resize.app", _.bind(this.render, this)); //re-renders the widget on browser resize
 		},
 
 		createPieChartData: function(){
@@ -35,10 +33,6 @@ define([
 		},
 
 		transformFunction: function(self) {
-		},
-
-		resetCollection: function(data) {
-			this.widgetCollection.reset(data);
 		},
 
 		renderPieChart:function(){
@@ -73,7 +67,7 @@ define([
 			var compiledTemplate = _.template(pieTemplate);
 
 			//if container is present, render in container
-			if(this.options && this.options.container && this.firstRender){
+			if(this.options && this.options.container && this.firstRender) {
 				this.options.container.html(this.$el.html(compiledTemplate));
 				this.firstRender = false;
 			} else {

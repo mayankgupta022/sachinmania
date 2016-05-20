@@ -46,7 +46,7 @@ define([
 
 		summaryTransformation: function(self) {
 			var totalMatches = self.summaryData.models.length;
-			
+
 			var totalRuns = _.reduce(self.summaryData.models, function(memo, num, i, obj) {
 				if(num.attributes.batting_score == "DNB" || num.attributes.batting_score == "TDNB")
 					return memo;
@@ -134,7 +134,7 @@ define([
 			return runs;
         },
 
-		render: function(){
+		render: function() {
 			var compiledTemplate = _.template(dashboardTemplate);
 			this.options.container.html(this.$el.html(compiledTemplate));
 

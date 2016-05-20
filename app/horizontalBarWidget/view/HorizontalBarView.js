@@ -8,9 +8,9 @@ define(
 ], function($, _, Backbone, horizontalBarTemplate, CommonView, HorizontalBarCollection) {
 
     var HorizontalBarView = CommonView.extend({
-        firstRender             : true,
+        firstRender: true,
 
-        initialize : function(options) {
+        initialize: function(options) {
             if(options) {
                 this.options=options;
 
@@ -21,12 +21,9 @@ define(
 
                 this.createHorizontalBarData();
             }
-
-            $(window).bind("resize.app", _.bind(this.render, this)); //re-renders the widget on browser resize
-
         },
 
-        createHorizontalBarData: function(){
+        createHorizontalBarData: function() {
             this.widgetCollection = new HorizontalBarCollection(this.options.data, this.options);
             if(this.options.url){
                 this.widgetCollection.on('reset',this.render,this);
@@ -38,12 +35,14 @@ define(
         transformFunction: function(self) {
         },
 
-        renderHorizontalBarGraph:function(){
+        renderHorizontalBarGraph:function() {
             var horizontalBarData = this.barChartData;
             var self = this;
 
             var leftMargin = 100;
             var bottomMargin = 15;
+
+            $(".custom-chart", this.$el).attr("style", "height:" + ((horizontalBarData[0].values.length * 12) + 50) + "px !important");
 
             nv.addGraph(function() {
                 var chart = nv.models.multiBarHorizontalChart()
@@ -78,34 +77,22 @@ define(
             var compiledTemplate = _.template(horizontalBarTemplate);
 
             //if container is present, render in container
-            if(this.options && this.options.container && this.firstRender){
+            if(this.options && this.options.container && this.firstRender) {
                 this.options.container.html(this.$el.html(compiledTemplate));
                 this.firstRender = false;
-            }else
+            } else {
                 this.$el.html(compiledTemplate);
-
-                if(this.options.size && this.options.size=="medium") {
-                    $("#horizontalBarChart", this.$el).removeClass("custom-chart-large").addClass("custom-chart-medium");
-                } else if(this.options.size && this.options.size=="large"){
-                    $("#horizontalBarChart", this.$el).removeClass("custom-chart").addClass("custom-chart-large");
-                } else if(this.options.size && this.options.size=="fluid"){
-                    $("#horizontalBarChart", this.$el).removeClass("custom-chart").addClass("custom-chart-fluid");
-                }
+            }
 
             if(this.widgetCollection && this.widgetCollection.length != 0 && this.barChartData.length != 0 ) {
                 this.renderHorizontalBarGraph();
-            }else{
+            } else {
                 this.$('#horizontalBarChart').html("<div class='panel panel-danger error-message'><div class='panel-heading'>No Data Found</div></div>");
             }
-            return this;
-        },
 
-        destroyView: function(){
-            $(window).unbind("resize.app");
-            this.undelegateEvents();
-            this.remove();
-            Backbone.View.prototype.remove.call(this);
+            return this;
         }
+
     });
 
     return HorizontalBarView;

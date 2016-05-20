@@ -6,11 +6,12 @@ define([
     var CommonView = Backbone.View.extend({
 
         destroyView: function(){
+			$(window).unbind("resize.app");
 			this.undelegateEvents();
 			this.remove();
 			Backbone.View.prototype.remove.call(this);
 		}
-        
+
     });
 
     return CommonView;

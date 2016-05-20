@@ -17,9 +17,6 @@ define([
             if(options) {
                 this.options=options;
 
-                if(this.options.items) {
-                    this.items = this.options.items;
-                }
                 if(this.options.currentDisplayWidget) {
                     this.currentDisplayWidget = this.options.currentDisplayWidget;
                 }
@@ -30,8 +27,6 @@ define([
 
                 this.createGridElementData();
             }
-
-            $(window).bind("resize.app", _.bind(this.render, this));
         },
 
         createGridElementData: function(){
@@ -50,7 +45,7 @@ define([
 
             var compiledTemplate = _.template(gridElementTemplate,data);
 
-            if(this.options && this.options.container && this.firstRender){
+            if(this.options && this.options.container && this.firstRender) {
                 this.options.container.html(this.$el.html(compiledTemplate));
                 this.firstRender = false;
             } else {
@@ -66,7 +61,7 @@ define([
             if(this.currentWidget) {
                 this.currentWidget.destroyView();
             }
-            switch (this.currentDisplayWidget){
+            switch(this.currentDisplayWidget) {
                 case 'HorizontalBar':
                     this.createHorizontalBarWidget()
                     break;
@@ -87,8 +82,6 @@ define([
                 container:$("#gridContainer", this.$el),
                 data:this.options.data,
                 widgetID:this.options.widgetID,
-                denominate:this.options.denominate,
-                dataUnit:this.options.dataUnit,
                 showLegend: this.options.showLegend,
                 parentRef: this,
                 transformFunction: this.options.transformationFunction
@@ -101,7 +94,8 @@ define([
                 data:this.options.data,
                 widgetID: this.options.widgetID,
                 doughnut: doughnut,
-                showLegend: this.options.showLegend,                parentRef: this,
+                showLegend: this.options.showLegend,
+                parentRef: this,
                 transformFunction: this.options.transformationFunction
 			});
 		},
@@ -110,8 +104,8 @@ define([
             this.currentWidget = new SummaryView({
                 container: $("#gridContainer", this.$el),
                 data: this.options.data,
-                dataUnit: this.options.dataUnit,
-                denominate:this.options.denominate,
+                widgetID: this.options.widgetID,
+                parentRef: this,
                 transformFunction: this.options.transformationFunction
             });
         },
