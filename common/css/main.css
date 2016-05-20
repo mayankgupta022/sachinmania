@@ -35,6 +35,8 @@ header .carousel-caption {
 
 .panel-heading {
     background-color: #fff !important;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .summary-data{
