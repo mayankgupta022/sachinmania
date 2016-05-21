@@ -1,17 +1,15 @@
 define([
     'jquery', 'underscore', 'backbone',
-    'text!gridWidget/template/gridElementTemplate.htm',
+    'text!gridWidget/template/gridTemplate.htm',
     'common/view/CommonView',
-    'common/collection/CommonCollection',
     'horizontalBarWidget/view/HorizontalBarView',
     'pieWidget/view/PieView',
 	'summaryWidget/view/SummaryView'
-], function($, _, Backbone, gridElementTemplate, CommonView, GridElementCollection, HorizontalBarView, PieView, SummaryView){
+], function($, _, Backbone, gridTemplate, CommonView, HorizontalBarView, PieView, SummaryView){
 
-    var GridElementView = CommonView.extend({
+    var GridView = CommonView.extend({
 
         currentDisplayWidget: 'HorizontalBar',
-        firstRender: true,
 
         initialize: function(options){
             if(options) {
@@ -25,15 +23,6 @@ define([
                     this.transformationFunction = options.transformationFunction;
                 }
 
-                this.createGridElementData();
-            }
-        },
-
-        createGridElementData: function(){
-            this.gridElementCollection = new GridElementCollection(this.options.data, this.options);
-            if(this.options.url) {
-                this.gridElementCollection.on('reset',this.render,this);
-            } else {
                 this.render();
             }
         },
@@ -43,14 +32,8 @@ define([
                 gridHeading: this.options.heading
             };
 
-            var compiledTemplate = _.template(gridElementTemplate,data);
-
-            if(this.options && this.options.container && this.firstRender) {
-                this.options.container.html(this.$el.html(compiledTemplate));
-                this.firstRender = false;
-            } else {
-                this.$el.html(compiledTemplate);
-            }
+            var compiledTemplate = _.template(gridTemplate,data);
+            this.options.container.html(this.$el.html(compiledTemplate));
 
             this.renderSubmodules();
 
@@ -115,5 +98,5 @@ define([
 
     });
 
-    return GridElementView;
+    return GridView;
 });

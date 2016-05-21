@@ -9,7 +9,6 @@ define(
 ], function($, _, Backbone, summaryTemplate, CommonView, SummaryCollection, SummaryDataView) {
 
 	var SummaryView = CommonView.extend({
-		firstRender: true,
 
 		initialize: function (options) {
 			if(options) {
@@ -19,16 +18,14 @@ define(
 					this.transformFunction = options.transformFunction;
 				}
 
-				this.widgetCollection= new SummaryCollection();
-
 				this.createSummaryData();
 			}
 		},
 
 		createSummaryData: function () {
-			this.summaryData = new SummaryCollection(this.options.data, this.options);
+			this.widgetCollection = new SummaryCollection(this.options.data, this.options);
 			if (this.options.url) {
-				this.summaryData.on('sync', this.render, this);
+				this.widgetCollection.on('sync', this.render, this);
 			} else if(this.options.data) {
 				this.render();
 			}
@@ -50,21 +47,11 @@ define(
 		},
 
 		render: function() {
-			if(this.summaryData){
-				var summaryArray = this.transformFunction(this);
-
-				if(summaryArray)
-					this.widgetCollection.reset(summaryArray);
-			}
+			var summaryArray = this.transformFunction(this);
+			this.widgetCollection.reset(summaryArray);
 
 			var compiledTemplate = _.template(summaryTemplate);
-
-			if(this.options && this.options.container && this.firstRender) {
-				this.options.container.html(this.$el.html(compiledTemplate));
-				this.firstRender = false;
-			} else {
-				this.$el.html(compiledTemplate);
-			}
+			this.options.container.html(this.$el.html(compiledTemplate));
 
 			this.renderCollectionData();
 

@@ -8,7 +8,6 @@ define([
 ], function($, _, Backbone, pieTemplate, CommonView, PieCollection) {
 
 	var PieView = CommonView.extend({
-		firstRender: true,
 
 		initialize: function(options) {
 			if(options) {
@@ -65,14 +64,7 @@ define([
 			this.pieData = this.transformFunction(this);
 
 			var compiledTemplate = _.template(pieTemplate);
-
-			//if container is present, render in container
-			if(this.options && this.options.container && this.firstRender) {
-				this.options.container.html(this.$el.html(compiledTemplate));
-				this.firstRender = false;
-			} else {
-				this.$el.html(compiledTemplate);
-			}
+			this.options.container.html(this.$el.html(compiledTemplate));
 
 			if(this.pieData && this.pieData.length != 0 ) {
 				this.renderPieChart();

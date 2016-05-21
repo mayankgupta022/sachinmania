@@ -36,9 +36,6 @@ define([
 		},
 
 		destroyExistingViews: function(){
-			//empty existing divs
-			$("#content-wrapper").empty();
-
 			if(currentView) {
 				if(typeof currentView.destroyView === "function")
                     currentView.destroyView();

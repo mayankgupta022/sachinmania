@@ -7,7 +7,6 @@ define(
 ], function($, _, Backbone, summaryDataTemplate, CommonView) {
 
     var SummaryDataView = CommonView.extend({
-        firstRender: true,
 
         initialize: function(options) {
             this.options=options;
@@ -23,13 +22,7 @@ define(
                 summaryData:this.model,
                 options:this.options
             });
-
-            if(this.options && this.options.container && this.firstRender) {
-                this.options.container.html(this.$el.html(compiledTemplate));
-                this.firstRender = false;
-            } else {
-                this.$el.html(compiledTemplate);
-            }
+            this.$el.html(compiledTemplate);
 
             return this;
         }

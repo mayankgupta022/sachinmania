@@ -8,7 +8,6 @@ define(
 ], function($, _, Backbone, horizontalBarTemplate, CommonView, HorizontalBarCollection) {
 
     var HorizontalBarView = CommonView.extend({
-        firstRender: true,
 
         initialize: function(options) {
             if(options) {
@@ -67,21 +66,13 @@ define(
 
                 return chart;
             });
-
         },
 
         render: function() {
-            this.transformFunction(this);
+            this.barChartData = this.transformFunction(this);
 
             var compiledTemplate = _.template(horizontalBarTemplate);
-
-            //if container is present, render in container
-            if(this.options && this.options.container && this.firstRender) {
-                this.options.container.html(this.$el.html(compiledTemplate));
-                this.firstRender = false;
-            } else {
-                this.$el.html(compiledTemplate);
-            }
+            this.options.container.html(this.$el.html(compiledTemplate));
 
             if(this.widgetCollection && this.widgetCollection.length != 0 && this.barChartData.length != 0 ) {
                 this.renderHorizontalBarGraph();

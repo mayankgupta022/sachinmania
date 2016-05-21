@@ -5,8 +5,8 @@ define([
 	'text!dashboard/template/dashboardTemplate.htm',
 	'common/view/CommonView',
 	'common/collection/CommonCollection',
-	'gridWidget/view/GridElementView'
-], function($, _, Backbone, dashboardTemplate, CommonView, DashboardCollection, GridElementView){
+	'gridWidget/view/GridView'
+], function($, _, Backbone, dashboardTemplate, CommonView, DashboardCollection, GridView){
 
 	var DashboardView = CommonView.extend({
 
@@ -48,24 +48,24 @@ define([
 
 			averageRuns = _.sortBy(averageRuns, 'value').reverse();
 
-			self.barChartData= [
+			return [
 				{key: 'Total Runs',values:totalRuns},
 				{key: 'Average Runs',values:averageRuns}
 			];
         },
 
 		summaryTransformation: function(self) {
-			var totalMatches = self.summaryData.models.length;
+			var totalMatches = self.widgetCollection.models.length;
 
-			var totalRuns = _.reduce(self.summaryData.models, function(memo, num, i, obj) {
+			var totalRuns = _.reduce(self.widgetCollection.models, function(memo, num, i, obj) {
 				if(num.attributes.batting_score == "DNB" || num.attributes.batting_score == "TDNB")
 					return memo;
 				return memo + num.attributes.batting_score;
 			}, 0);
 
-			var totalWins = self.summaryData.where({match_result: "won"}).length;
+			var totalWins = self.widgetCollection.where({match_result: "won"}).length;
 
-			var totalCatches =  _.reduce(self.summaryData.models, function(memo, num, i, obj) {
+			var totalCatches =  _.reduce(self.widgetCollection.models, function(memo, num, i, obj) {
 				if(isNaN(num.attributes.catches))
 				return memo;
 				return memo + num.attributes.catches;
@@ -150,7 +150,7 @@ define([
 
 			this.data = this.dashboardCollection.toJSON();
 
-			this.summaryView = new GridElementView({
+			this.summaryView = new GridView({
 				container: $("#summaryContainer", this.$el),
 				data: this.data,
 				heading:"Summary",
@@ -158,7 +158,7 @@ define([
 				transformationFunction : this.summaryTransformation
 			});
 
-			this.scoreAgainstOppositionView = new GridElementView({
+			this.scoreAgainstOppositionView = new GridView({
 				container: $("#scoreAgainstOpposition", this.$el),
 				data:this.data,
 				widgetID:"scoreAgainstOpposition",
@@ -167,7 +167,7 @@ define([
 				transformationFunction: this.scoreAgainstOppositionTransformation
 			});
 
-			this.scoreInGroundView = new GridElementView({
+			this.scoreInGroundView = new GridView({
 				container: $("#scoreInGround", this.$el),
 				data:this.data,
 				widgetID:"scoreInGround",
@@ -177,7 +177,7 @@ define([
 				transformationFunction: this.scoreInGroundTransformation
 			});
 
-			this.centuriesView = new GridElementView({
+			this.centuriesView = new GridView({
 				container: $("#centuries", this.$el),
 				data:this.data,
 				widgetID:"centuries",
